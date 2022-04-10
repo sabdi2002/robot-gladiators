@@ -69,6 +69,9 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
  
 
 };
+if (playerHealth > 0) {
+  window.alert("Welcome to Robot Gladiators! Round" + (i+1));
+}
 
 for (var i = 0; i < enemyNames.length; i++) {
   var pickedEnemyName = enemyNames[i];

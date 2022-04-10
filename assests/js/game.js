@@ -16,7 +16,7 @@ var fight = function(enemyName) {
 // if player choses to fight, then fight
 if (promptFight === "fight" || promptFight === "FIGHT") {
     // remove enemy's health by subtracting the amount set in the playerAttack variable
-    enemyHealth = enemyHealth - playerAttack;
+    enemyHealth = Math.max(0, enemyHealth-playerAttack)
     console.log(
       playerName + " attacked " + enemyName + ". " + enemyName + " now has " + enemyHealth + " health remaining."
     );
@@ -29,7 +29,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
     }
   
     // remove player's health by subtracting the amount set in the enemyAttack variable
-    playerHealth = playerHealth - enemyAttack;
+    playerHealth = Math.max(0,playerHealth - enemyAttack);
     console.log(
       enemyName + " attacked " + playerName + ". " + playerName + " now has " + playerHealth + " health remaining."
     );
@@ -51,7 +51,7 @@ if (promptFight === "fight" || promptFight === "FIGHT") {
   if (confirmSkip) {
     window.alert(playerName + " has decided to skip this fight. Goodbye!");
     // subtract money from playerMoney for skipping
-    playerMoney = playerMoney - 10;
+    playerMoney = Math.max(0,playerMoney - 10);
     console.log("playerMoney", playerMoney);
   }
   // if no (false), ask question again by running fight() again
@@ -88,7 +88,7 @@ var startGame = function() {
 
       var pickedEnemyName = enemyNames[i];
 
-      enemyHealth = 50;
+      enemyHealth = Math.max(0,enemyHealth-damage)
 
       fight(pickedEnemyName);
       // if we're not at the last enemy in the array
@@ -133,7 +133,7 @@ var shop = function() {
   var shopOptionPrompt = window.prompt(
     "Would you like to REFILL your health, UPGRADE your attack, or LEAVE the store? Please enter one: 'REFILL', 'UPGRADE', or 'LEAVE' to make a choice."
     // use switch to carry out action
-switch (shopOptionPrompt) {
+switch (shopOptionPrompt); {
   case "refill":
     window.alert("Refilling player's health by 20 for 7 dollars.");
 
@@ -141,7 +141,7 @@ switch (shopOptionPrompt) {
     playerHealth = playerHealth + 20;
     playerMoney = playerMoney - 7;
     break;
-  case "upgrade":
+  case "upgrade";
     window.alert("Upgrading player's attack by 6 for 7 dollars.");
 
     // increase attack and decrease money
@@ -188,4 +188,11 @@ switch (shopOptionPrompt) {
     break;
 }
   );
+};
+
+// function to generate a random numeric value
+var randomNumber = function(min,max) {
+  var value = Math.floor(Math.random() * (max-min+1)+min);
+
+  return value;
 };
